@@ -24,7 +24,6 @@ gem 'figaro'
 gem 'stripe'
 gem 'rails_admin'
 gem 'payola-payments'
-gem 'paper_trail', '~> 4.0.0'
 gem 'permalink'
 
 
