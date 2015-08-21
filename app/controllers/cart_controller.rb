@@ -33,7 +33,19 @@ class CartController < ApplicationController
   # Clear the cart
   def clearcart
     session[:cart] = nil
-    redirect_to "cart_path"
+    redirect_to :action => :index
   end
 
+  def destroy
+    @cart.destroy if @cart.id == session[:cart_id]
+    respond_to do |format|
+      format.html { redirect_to :action => :index, notice: 'Product was successfully removed.' }
+      format.json { head :no_content }
+    end
+  end
+
+  def show
+  end
+
+    
 end
