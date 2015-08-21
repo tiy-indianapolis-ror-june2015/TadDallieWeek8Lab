@@ -7,7 +7,7 @@
             <li><%= item.name %></li>
             <li><%= item.description %></li>
             <li><%= item.price %></li>
-            <li><%= render 'payola/transactions/checkout', sellable: item %></li>
+            <li><%= link_to "Add To Cart", addcart_path(item.id) %></li>
           </ul>
         </div>
      <% end %>

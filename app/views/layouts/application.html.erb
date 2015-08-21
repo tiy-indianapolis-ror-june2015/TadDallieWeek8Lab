@@ -17,6 +17,7 @@
           <div id="navbar">
             <ul class="nav navbar-nav navbar-right">
               <% if user_signed_in? %>
+                <li><%= link_to 'View Cart', cart_path %></li>
                 <li><%= link_to 'New Product', new_product_path %></li>
                 <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
               <% else %>
