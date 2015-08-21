@@ -3,15 +3,14 @@
    <div class="row">
      <% product.each do |item| %>
        <div class="col-xs-3">
-           <%= item.name %>
-           <%= item.description %>
-           <%= item.price %>
-           <%= render 'payola/transactions/checkout', sellable: item %>
-
-       </div>
+          <ul clas="list-inline">
+            <li><%= item.name %></li>
+            <li><%= item.description %></li>
+            <li><%= item.price %></li>
+            <li><%= render 'payola/transactions/checkout', sellable: item %></li>
+          </ul>
+        </div>
      <% end %>
    </div>
   <%end %>
 </div>
-
-<%= link_to 'New Product', new_product_path %>
