@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   devise_for :users
   resources :products
 
-  root 'products#index'
+  get '/cart', to: 'cart#index'
+  get '/cart/clear', to: 'cart#clearcart'
+  get '/cart/:id', to: 'cart#add', as: :addcart
 
+  root 'products#index'
 
 end

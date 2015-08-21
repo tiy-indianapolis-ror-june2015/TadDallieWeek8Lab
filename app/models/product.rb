@@ -3,6 +3,10 @@ class Product < ActiveRecord::Base
   permalink :name
   attachment :file
 
+  has_many :itemcarts
+  has_many :carts, through: :itemcarts
+  belongs_to :user
+
 
 
 end
