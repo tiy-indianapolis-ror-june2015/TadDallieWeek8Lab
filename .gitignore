@@ -21,6 +21,7 @@ config/secrets.yml
 /.bundle
 /vendor/bundle
 
+
 # these should all be checked in to normalise the environment:
 # Gemfile.lock, .ruby-version, .ruby-gemset
 
@@ -34,6 +35,11 @@ bower.json
 
 # Ignore pow environment settings
 .powenv
+
+# Ignore all logfiles and tempfiles.
+/log/*
+!/log/.keep
+/tmp
 
 # Ignore application configuration
 /config/application.yml
