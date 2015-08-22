@@ -6,6 +6,10 @@ class Product < ActiveRecord::Base
   belongs_to :cart
   belongs_to :user
 
+  def self.search(query)
+    where ("name like ?", "%#{query}%")
+    where ("description like ?", "%#{query}%")    
+  end
 
 
 end
