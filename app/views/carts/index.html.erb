@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+<div class="container">
+  <h1>Shopping Cart</h1>
+  <div class="row">
+
+    <% @cart.each do | id, quantity | %>
+      <ul class="list-inline">
+        <% product = Product.find_by_id(id) %>
+        <li><%= product.name %></li>
+        <li><%= %></li>
+        <li><%= %></li>
+      </ul>
+      <% end %>
+  </div>
+</div>
+<br>
+
+<%= link_to 'New Cart', new_cart_path %>
