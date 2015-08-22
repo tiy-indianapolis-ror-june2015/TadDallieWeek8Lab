@@ -7,7 +7,7 @@
             <li><%= item.name %></li>
             <li><%= item.description %></li>
             <li><%= item.price %></li>
-            <li><%= link_to "Add To Cart", addcart_path(item.id) %></li>
+            <li><%= button_to "Add To Cart", addtocart_path(:id => item.id) %></li>
           </ul>
         </div>
      <% end %>
