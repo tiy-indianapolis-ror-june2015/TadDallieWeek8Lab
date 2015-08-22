@@ -25,7 +25,7 @@
                 <li><%= link_to "Sign In", user_session_path, :class => 'navbar-link' %></li>
               <% end %>
               <%= form_tag "#", :method => :get, class: "navbar-form navbar-left" do %>
-                <%= text_field_tag :search_item, params[:search_item], placeholder: 'Search...', :autocomplete => :off, class: "form-control"  %>
+                <%= text_field_tag :search_item, params[:search_item], placeholder: 'Search...', :autocomplete => :off, class: "form-control", id:"search"  %>
                 <%= submit_tag "Search", class: "btn btn-primary" %>
               <% end %>
             </ul>
@@ -35,13 +35,12 @@
 
       <!-- Shows errors when one is present -->
       <div class="container">
-        <div class="text-center col-xs-3 col-xs-offset-9">
-          <% if flash[:error] %>
-            <p class='error'><%=h flash[:error] %></p>
-          <% end %>
-          <% if flash[:notice] %>
-            <p class='notice'><%=h flash[:notice] %></p>
-          <% end %>
+        <% flash.each do |name,msg| %>
+        <%= content_tag :div, class: "alert alert-#{ name == :error ? "danger" : "success"} alert-dismissable", role: "alert" do %>
+          <button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true"><span>&times;</span></button>
+            <%= msg %>
+              <% end %>
+                <% end %>
         </div>
 
         <%= yield %>
