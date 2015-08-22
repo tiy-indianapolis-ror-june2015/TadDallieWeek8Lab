@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   mount Payola::Engine => '/payola', as: :payola
   devise_for :users
   resources :products
-  get '/cart/clear', to: 'cart#clearcart'
-  get '/cart/:id', to: 'cart#add', as: :addcart
 
-  resources :cart
+  post 'carts/add' => 'carts#add', as: :addtocart
+
+  resources :carts
 
   root 'products#index'
 
