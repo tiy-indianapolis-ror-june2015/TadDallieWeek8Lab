@@ -7,9 +7,12 @@ class Product < ActiveRecord::Base
   has_many :carts, through: :itemcarts
   belongs_to :user
 
+  validates :name, presence: true, uniqueness: true
+  validates :description, presence: true
+
   def self.search(query)
     where ("name like ?", "%#{query}%")
-    where ("description like ?", "%#{query}%")    
+    where ("description like ?", "%#{query}%")
   end
 
 
