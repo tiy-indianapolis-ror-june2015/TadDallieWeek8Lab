@@ -6,6 +6,13 @@ class Product < ActiveRecord::Base
   belongs_to :cart
   belongs_to :user
 
+  validates :name, presence: true, uniqueness: true
+  validates :description, presence: true
+
+  def self.search(query)
+    where ("name like ?", "%#{query}%")
+    where ("description like ?", "%#{query}%")
+  end
 
 
 end
