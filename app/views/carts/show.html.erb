@@ -1,8 +1,9 @@
-<p id="notice"><%= notice %></p>
+
 <head>
   <%= render 'payola/transactions/stripe_header' %>
 </head>
 <h1>Shopping Cart</h1>
+<div class="col-xs-6">
 <ul class="list-group">
   <% @cart.line_items.each do | item | %>
     <li class="list-group-item">
@@ -14,8 +15,8 @@
     <li class="list-group-item">Shopping Cart Total:
       <%= @cart.total %></li>
 </ul>
-
-<%= render 'payola/transactions/checkout', sellable: Cart.first, :locals => {price: @cart.total} %>
+</div>
+<%= %>
 
 <%= link_to 'Edit', edit_cart_path(@cart) %>
 <%= link_to 'Back', root_path %>

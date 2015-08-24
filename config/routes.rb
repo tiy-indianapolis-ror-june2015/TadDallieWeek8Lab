@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "cart" => "carts#show", :as => "current_cart"
   resources :line_items
   resources :carts
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
