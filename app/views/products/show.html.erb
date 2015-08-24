@@ -6,6 +6,10 @@
 </p>
 
 <p>
+  <%= image_tag attachment_url(@product, :file, :fill, 300, 300, fallback: "crazy_cage.jpg") %>
+</p>
+
+<p>
   <strong>Price:</strong>
   <%= @product.price %>
 </p>
