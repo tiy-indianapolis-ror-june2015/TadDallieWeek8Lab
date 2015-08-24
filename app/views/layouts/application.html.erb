@@ -24,10 +24,11 @@
                 <li><%= link_to "Sign Up", new_user_registration_path, :class => 'navbar-link' %></li>
                 <li><%= link_to "Sign In", user_session_path, :class => 'navbar-link' %></li>
               <% end %>
-              <%= form_tag products_path, :method => :get, class: "navbar-form navbar-left", id:"search" do %>
+              <%= form_tag(products_path, :method => :get, class: "navbar-form navbar-left", id:"search") do %>
                 <%= text_field_tag :search_item, params[:search_item], placeholder: 'Search...', :autocomplete => :off, class: "form-control" %>
                 <%= submit_tag "Search", class: "btn btn-primary" %>
               <% end %>
+              <%= render partial: "products/product"%>
             </ul>
           </div>
         </div>
