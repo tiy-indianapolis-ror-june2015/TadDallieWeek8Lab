@@ -1,4 +1,21 @@
 <p id="notice"><%= notice %></p>
+<head>
+  <%= render 'payola/transactions/stripe_header' %>
+</head>
+<h1>Shopping Cart</h1>
+<ul class="list-group">
+  <% @cart.line_items.each do | item | %>
+    <li class="list-group-item">
+      <strong><%= item.product.name %></strong>
+    </li>
+    <li class="list-group-item">Price:
+      <%= item.product.price %></li>
+  <% end %>
+    <li class="list-group-item">Shopping Cart Total:
+      <%= @cart.total %></li>
+</ul>
 
-<%= link_to 'Edit', edit_cart_path(@cart) %> |
-<%= link_to 'Back', carts_path %>
+<%= render 'payola/transactions/checkout', sellable: Cart.first, :locals => {price: @cart.total} %>
+
+<%= link_to 'Edit', edit_cart_path(@cart) %>
+<%= link_to 'Back', root_path %>
