@@ -1,16 +1,17 @@
 <div class="container">
-  <% @products.each_slice(4) do |product| %>
+  <% @products.each_slice(4) do |item| %>
    <div class="row">
-     <% product.each do |item| %>
+     <% item.each do |product| %>
        <div class="col-xs-3">
           <ul clas="list-inline">
-            <li><%= item.name %></li>
-            <li><%= item.description %></li>
-            <li><%= item.price %></li>
-            <li><%= button_to "Add To Cart", addtocart_path(:id => item.id) %></li>
+            <li><%= product.name %></li>
+            <li><%= product.description %></li>
+            <li><%= product.price %></li>
+            <li><%= button_to "Add To Cart", line_items_path(:product_id => product)  %></li>
           </ul>
         </div>
      <% end %>
    </div>
   <%end %>
 </div>
+<%=  %>
