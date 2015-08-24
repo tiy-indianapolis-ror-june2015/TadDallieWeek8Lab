@@ -10,11 +10,9 @@
     name: Faker::Commerce.product_name
     price: Faker::Commerce.price
     description: Faker::Lorem.sentence
-    permalink: Faker::Internet.slug(
-      Faker::Lorem.words(4), '-')
-    file: http://placecage.com/200/300
+    file: "crazy_cage.jpg"
     )
     user.product << product
   end
-  
+
 end

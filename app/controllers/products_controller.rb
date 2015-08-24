@@ -4,10 +4,11 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
+    @products = Product.all
     if params[:search]
       @products = Product.search(params[:search]).order("created_at DESC")
     else
-    @products = Product.order("created_at DESC").all
+      @products = Product.all.order("created_at DESC")
     end
   end
 
@@ -73,6 +74,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :price, :description)
+      params.require(:product).permit(:name, :price, :description, :file)
     end
 end

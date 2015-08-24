@@ -6,13 +6,14 @@ class Product < ActiveRecord::Base
   has_many :line_items
   belongs_to :cart
   belongs_to :user
-  validates :name, presence: true, uniqueness: true
+
+  validates :name, presence: true
+
   validates :description, presence: true
 
-  # def self.search(query)
-  #   where ("name like ?", "%#{query}%")
-  #   where ("description like ?", "%#{query}%")
-  # end
+  def self.search(search)
+    where("description LIKE ? OR name LIKE ?", "%#{search}%”, “%#{search}%")
+  end
 
   def not_in_cart
     if line_items.count.zero?
