@@ -9,10 +9,10 @@ class Product < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
   validates :description, presence: true
 
-  def self.search(query)
-    where ("name like ?", "%#{query}%")
-    where ("description like ?", "%#{query}%")
-  end
+  # def self.search(query)
+  #   where ("name like ?", "%#{query}%")
+  #   where ("description like ?", "%#{query}%")
+  # end
 
   def not_in_cart
     if line_items.count.zero?
