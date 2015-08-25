@@ -1,5 +1,5 @@
 class CartsController < ApplicationController
-  before_action :set_cart, only: [:show, :edit, :update, :destroy]
+
 
   # GET /carts
   # GET /carts.json
@@ -10,7 +10,11 @@ class CartsController < ApplicationController
   # GET /carts/1
   # GET /carts/1.json
   def show
-
+    @cart = Cart.find_by_id(session[:cart_id])
+    if params[:sale_id]
+      @cart.clear!
+      redirect_to root_path, :notice => "Thank you for your business!"
+    end
   end
 
   # GET /carts/new
@@ -51,6 +55,7 @@ class CartsController < ApplicationController
       end
     end
   end
+  
 
   # DELETE /carts/1
   # DELETE /carts/1.json
@@ -64,9 +69,6 @@ class CartsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_cart
-      @cart = Cart.find(params[:id])
-    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cart_params

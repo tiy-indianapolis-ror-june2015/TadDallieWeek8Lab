@@ -4,8 +4,7 @@ class Product < ActiveRecord::Base
   attachment :file
   before_destroy :not_in_cart
   has_many :line_items
-  belongs_to :cart
-  belongs_to :user
+  has_many :carts, :through => :line_items
 
   validates :name, presence: true
 

@@ -1,10 +1,13 @@
 Payola.configure do |config|
+  config.secret_key = ENV['stripe_api_key']
+  config.publishable_key = ENV['stripe_publishable_key']
+
   # Example subscription:
-  # 
+  #
   # config.subscribe 'payola.package.sale.finished' do |sale|
   #   EmailSender.send_an_email(sale.email)
   # end
-  # 
+  #
   # In addition to any event that Stripe sends, you can subscribe
   # to the following special payola events:
   #

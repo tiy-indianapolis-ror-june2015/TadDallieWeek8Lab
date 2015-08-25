@@ -4,6 +4,8 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
+    @cart = Cart.find_by_id(session[:cart_id])
+
     @products = Product.all
     if params[:search]
       @products = Product.search(params[:search]).order("created_at DESC")

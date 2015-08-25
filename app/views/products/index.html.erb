@@ -3,12 +3,13 @@
    <div class="row">
      <% item.each do |product| %>
        <div class="col-xs-3">
-          <ul clas="list-inline">
-            <li><%= product.name %></li>
-            <li><%= attachment_image_tag(product, :file, :fill, 300, 300, fallback: "crazy_cage.jpg") %></li>
-            <li><%= product.description %></li>
-            <li><%= product.price %></li>
-            <li><%= button_to "Add To Cart", line_items_path(:product_id => product)  %></li>
+          <ul clas="list-group">
+            <li class="list-group-item"><strong><%= product.name %></strong></li>
+            <li class="list-group-item"><%= attachment_image_tag(product, :file, :fit, 100, 300, fallback: "crazy_cage.jpg") %></li>
+            <li class="list-group-item"><strong>Price: $<%= product.price %></strong></li>
+            <li class="list-group-item"><%= button_to "Add To Cart", line_items_path(:product_id => product), :class => "btn btn-warning btn-sm"  %>
+              <%= button_to "More Info", product_path(product), :class => "btn btn-warning btn-sm" %>
+            </li>
           </ul>
         </div>
      <% end %>

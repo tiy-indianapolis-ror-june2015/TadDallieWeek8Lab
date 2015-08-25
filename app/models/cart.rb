@@ -1,14 +1,21 @@
 class Cart < ActiveRecord::Base
   include Payola::Sellable
-  permalink :created_at
   has_many :line_items, :dependent => :destroy
+  has_many :products, :through => :line_items
+  before_validation :set_permalink, :on => :create
 
-  def total
-    self.line_items.inject(0){ |sum,x| sum + x.product.price}
+  def total_quantity
+    line_items.sum(:quantity)
   end
 
-  def name
-
+  def set_permalink
+    self.permalink = SecureRandom.urlsafe_base64
   end
+
+  def clear!
+    line_items.destroy_all
+    update(:price => 0)
+  end
+
 
 end
