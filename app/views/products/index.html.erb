@@ -1,17 +1,18 @@
 <div class="container">
-  <% @products.each_slice(4) do |product| %>
+  <% @products.each_slice(4) do |item| %>
    <div class="row">
-     <% product.each do |item| %>
+     <% item.each do |product| %>
        <div class="col-xs-3">
-           <%= item.name %>
-           <%= item.description %>
-           <%= item.price %>
-           <%= render 'payola/transactions/checkout', sellable: item %>
-
-       </div>
+          <ul clas="list-inline">
+            <li><%= product.name %></li>
+            <li><%= attachment_image_tag(product, :file, :fill, 300, 300, fallback: "crazy_cage.jpg") %></li>
+            <li><%= product.description %></li>
+            <li><%= product.price %></li>
+            <li><%= button_to "Add To Cart", line_items_path(:product_id => product)  %></li>
+          </ul>
+        </div>
      <% end %>
    </div>
   <%end %>
 </div>
-
-<%= link_to 'New Product', new_product_path %>
+<%=  %>
